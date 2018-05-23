@@ -28,7 +28,9 @@ public class Vigenere_Maluko
 	if(menu==1){
             Mensagem nova =new Mensagem();
             nova.conteudo=JOptionPane.showInputDialog("digite o conteudo de sua mensagem");
-            nova.novaTambem.conteudo2=JOptionPane.showInputDialog("digite a sua senha");           
+	    nova.conteudo=nova.conteudo.toLowerCase();	
+            nova.novaTambem.conteudo2=JOptionPane.showInputDialog("digite a sua senha");
+	    nova.novaTambem.conteudo2=nova.novaTambem.conteudo2.toLowerCase();	
             nova.letras=nova.conteudo.length();
             nova.novaTambem.letras2=nova.novaTambem.conteudo2.length();
             String trab="";
@@ -172,7 +174,9 @@ public class Vigenere_Maluko
 	else if(menu==2){
             Mensagem nova =new Mensagem();
             nova.conteudo=JOptionPane.showInputDialog("Digite a mensagem criptografada");
-            nova.novaTambem .conteudo2=JOptionPane.showInputDialog("Digite a senha");           
+	    nova.conteudo=nova.conteudo.toLowerCase();	
+            nova.novaTambem .conteudo2=JOptionPane.showInputDialog("Digite a senha");
+	    nova.novaTambem.conteudo2=nova.novaTambem.conteudo2.toLowerCase();	
             nova.letras=nova.conteudo.length();
             nova.novaTambem.letras2=nova.novaTambem.conteudo2.length();
             String trab="";
