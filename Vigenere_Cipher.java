@@ -2,8 +2,8 @@ package Vigenere_Maluko;
 import javax.swing.JOptionPane;
 public class Vigenere_Maluko 
 {
-  public static int CalculaLetra(char msg, int vari)
-   {
+    public static int CalculaLetra(char msg, int vari)
+    {
                     if(msg=='a'){vari=1;}else if(msg=='b'){vari=2;}else if(msg=='c'){vari=3;}
                     else if(msg=='d'){vari=4;}else if(msg=='e'){vari=5;}else if(msg=='f'){vari=6;}
                     else if(msg=='g'){vari=7;}else if(msg=='h'){vari=8;}else if(msg=='i'){vari=9;}	
@@ -15,7 +15,7 @@ public class Vigenere_Maluko
                     else if(msg=='y'){vari=25;}else if(msg=='z'){vari=26;}
                     return vari;
     }
-    public static char CalculaLetra2(char msg2, int vari2, int vari, char resulFinal )
+    public static char CalculaLetra2(char msg2, int vari2, int vari, char resulFinal, int menu)
     {
                     if(msg2=='a'){vari2=1;}else if(msg2=='b'){vari2=2;}else if(msg2=='c'){vari2=3;}
                     else if(msg2=='d'){vari2=4;}else if(msg2=='e'){vari2=5;}else if(msg2=='f'){vari2=6;}
@@ -27,9 +27,17 @@ public class Vigenere_Maluko
                     else if(msg2=='v'){vari2=22;}else if(msg2=='w'){vari2=23;}else if(msg2=='x'){vari2=24;}
                     else if(msg2=='y'){vari2=25;}else if(msg2=='z'){vari2=26;}
                     
-                    vari= vari+26;
-                    int resultado= ((vari-vari2+1)%26);
-	    		
+                    int resultado = 0;
+                    if(menu==1)
+                    {
+                         resultado = ((vari+vari2-1)%26);
+                    }
+                    else if(menu==2)
+                    {
+                        vari = vari+26;
+                        resultado = ((vari-vari2+1)%26);
+                    }
+                    
                     if(resultado==1){resulFinal='a';}else if(resultado==2){resulFinal='b';}else if(resultado==3){resulFinal='c';}    			
                     else if(resultado==4){resulFinal='d';}else if(resultado==5){resulFinal='e';}else if(resultado==6){resulFinal='f';}
                     else if(resultado==7){resulFinal='g';}else if(resultado==8){resulFinal='h';}else if(resultado==9){resulFinal='i';}
@@ -55,8 +63,9 @@ public class Vigenere_Maluko
 	Senha novaTambem= new Senha();
         }
 	int menu=Integer.parseInt(JOptionPane.showInputDialog("Cifra de Vigenere \n 1. Criptografar \n 2.Descriptografar"));
-	if(menu==1){
-            Mensagem nova =new Mensagem();
+	if(menu==1)
+        {
+            Mensagem nova=new Mensagem();
             nova.conteudo=JOptionPane.showInputDialog("digite o conteudo de sua mensagem");
 	    nova.conteudo=nova.conteudo.toLowerCase();	
             nova.novaTambem.conteudo2=JOptionPane.showInputDialog("digite a sua senha");
@@ -70,31 +79,30 @@ public class Vigenere_Maluko
                 nova.novaTambem.letras2 = nova.novaTambem.letras2 + nova.novaTambem.letras2; 
             }
                 char resulFinal='c';
-	        int vari2=0;
                 int x = nova.letras -1;
 	        int y = nova.novaTambem.letras2-1; 
                 int i2=0;
-                for(int i=0; x>=i & y>=i2; i++){   
-                int vari=0; //*deixar a vari aki*
-                // atribuindo o valor para a mensagem;
-                char msg = nova.conteudo.charAt(i); 
-	    	vari=CalculaLetra(msg,vari);
-                if(vari==0){
-                    resulFinal = nova.conteudo.charAt(i);                
-                }
-                else{
-                    //atribuindo o valor para a senha;
-                   char msg2 = nova.novaTambem.conteudo2.charAt(i2);
-                   resulFinal=CalculaLetra2( msg2,vari2,vari,resulFinal);
-                   i2++;
-                }
-                trab += resulFinal;
+                for(int i=0; x>=i & y>=i2; i++)
+                {   
+                    int vari2=0;
+                    int vari=0; //*deixar a vari aki*
+                    char msg = nova.conteudo.charAt(i);// atribuindo o valor para a mensagem;
+                    vari=CalculaLetra(msg,vari);
+                    if(vari==0)
+                         resulFinal = nova.conteudo.charAt(i);
+                    else
+                    {
+                        char msg2 = nova.novaTambem.conteudo2.charAt(i2);//atribuindo o valor para a senha;
+                        resulFinal=CalculaLetra2(msg2,vari2,vari,resulFinal,menu);
+                        i2++;
+                    }
+                    trab += resulFinal;
 	    	}//aqui termina o for de condição dupla;
 	    	JOptionPane.showMessageDialog(null,"A sua mensagem criptografada: \n"+trab);
 	    }
-//*************************
-	else if(menu==2){
-            Mensagem nova =new Mensagem();
+	else if(menu==2)
+        {
+            Mensagem nova=new Mensagem();
             nova.conteudo=JOptionPane.showInputDialog("Digite a mensagem criptografada");
 	    nova.conteudo=nova.conteudo.toLowerCase();	
             nova.novaTambem .conteudo2=JOptionPane.showInputDialog("Digite a senha");
@@ -108,22 +116,21 @@ public class Vigenere_Maluko
                 nova.novaTambem.letras2 = nova.novaTambem.letras2 + nova.novaTambem.letras2;
             }
                 char resulFinal='c';
-	        int vari2=0;
 	        int x = nova.letras -1;
-	        int y = nova.novaTambem.letras2-1; 
+	        int y = nova.novaTambem.letras2-1;
                 int i2=0;
 	    	for(int i=0; x>=i & y>=i2; i++){
+                int vari2=0;
                 int vari=0; //*deixar a vari aki*
-	    	// atribuindo o valor para a mensagem;
-	    	char msg = nova.conteudo.charAt(i);
+	    	char msg = nova.conteudo.charAt(i);// atribuindo o valor para a mensagem;
 	   	vari=CalculaLetra(msg,vari);
-                if(vari==0){
+                if(vari==0)
+                {
                     resulFinal = nova.conteudo.charAt(i);                   
                 }
                 else{
-                    //atribuindo o valor para a senha;
-                    char msg2 = nova.novaTambem.conteudo2.charAt(i2);
-                    resulFinal=CalculaLetra2( msg2,vari2,vari,resulFinal);
+                    char msg2 = nova.novaTambem.conteudo2.charAt(i2);//atribuindo o valor para a senha;
+                    resulFinal=CalculaLetra2(msg2,vari2,vari,resulFinal,menu);
                     i2++;
                 }
 	    	trab += resulFinal;
