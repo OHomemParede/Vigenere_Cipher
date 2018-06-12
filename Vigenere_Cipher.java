@@ -1,6 +1,5 @@
-package Vigenere_Maluko;
-import javax.swing.JOptionPane;
-public class Vigenere_Maluko 
+import javax.swing.*;
+public class Testes
 {
     public static int CalculaLetra(char msg, int vari)
     {
@@ -62,22 +61,25 @@ public class Vigenere_Maluko
 	int letras;
 	Senha novaTambem= new Senha();
         }
-	int menu=Integer.parseInt(JOptionPane.showInputDialog("Cifra de Vigenere \n 1. Criptografar \n 2.Descriptografar"));
-	if(menu==1)
+        char re_user = 'S';
+        while(re_user == 's' | re_user == 'S')
         {
-            Mensagem nova=new Mensagem();
-            nova.conteudo=JOptionPane.showInputDialog("digite o conteudo de sua mensagem");
-	    nova.conteudo=nova.conteudo.toLowerCase();	
-            nova.novaTambem.conteudo2=JOptionPane.showInputDialog("digite a sua senha");
-	    nova.novaTambem.conteudo2=nova.novaTambem.conteudo2.toLowerCase();	
-            nova.letras=nova.conteudo.length();
-            nova.novaTambem.letras2=nova.novaTambem.conteudo2.length();
-            String trab="";
-	    while(nova.letras>nova.novaTambem.letras2)
+            int menu=Integer.parseInt(JOptionPane.showInputDialog("Cifra de Vigenere \n 1. Criptografar \n 2.Descriptografar"));
+            if(menu==1)
             {
-                nova.novaTambem.conteudo2+=nova.novaTambem.conteudo2;
-                nova.novaTambem.letras2 = nova.novaTambem.letras2 + nova.novaTambem.letras2; 
-            }
+                Mensagem nova=new Mensagem();
+                nova.conteudo=JOptionPane.showInputDialog("digite o conteudo de sua mensagem");
+                nova.conteudo=nova.conteudo.toLowerCase();	
+                nova.novaTambem.conteudo2=JOptionPane.showInputDialog("digite a sua senha");
+                nova.novaTambem.conteudo2=nova.novaTambem.conteudo2.toLowerCase();	
+                nova.letras=nova.conteudo.length();
+                nova.novaTambem.letras2=nova.novaTambem.conteudo2.length();
+                String trab="";
+                while(nova.letras>nova.novaTambem.letras2)
+                {
+                    nova.novaTambem.conteudo2+=nova.novaTambem.conteudo2;
+                    nova.novaTambem.letras2 = nova.novaTambem.letras2 + nova.novaTambem.letras2; 
+                }
                 char resulFinal='c';
                 int x = nova.letras -1;
 	        int y = nova.novaTambem.letras2-1; 
@@ -89,7 +91,7 @@ public class Vigenere_Maluko
                     char msg = nova.conteudo.charAt(i);// atribuindo o valor para a mensagem;
                     vari=CalculaLetra(msg,vari);
                     if(vari==0)
-                         resulFinal = nova.conteudo.charAt(i);
+                        resulFinal = nova.conteudo.charAt(i);
                     else
                     {
                         char msg2 = nova.novaTambem.conteudo2.charAt(i2);//atribuindo o valor para a senha;
@@ -100,46 +102,47 @@ public class Vigenere_Maluko
 	    	}//aqui termina o for de condição dupla;
 	    	JOptionPane.showMessageDialog(null,"A sua mensagem criptografada: \n"+trab);
 	    }
-	else if(menu==2)
-        {
-            Mensagem nova=new Mensagem();
-            nova.conteudo=JOptionPane.showInputDialog("Digite a mensagem criptografada");
-	    nova.conteudo=nova.conteudo.toLowerCase();	
-            nova.novaTambem .conteudo2=JOptionPane.showInputDialog("Digite a senha");
-	    nova.novaTambem.conteudo2=nova.novaTambem.conteudo2.toLowerCase();	
-            nova.letras=nova.conteudo.length();
-            nova.novaTambem.letras2=nova.novaTambem.conteudo2.length();
-            String trab="";
-            while(nova.letras>nova.novaTambem.letras2)
-	    {
-                nova.novaTambem.conteudo2+=nova.novaTambem.conteudo2;
-                nova.novaTambem.letras2 = nova.novaTambem.letras2 + nova.novaTambem.letras2;
-            }
+            else if(menu==2)
+            {
+                Mensagem nova=new Mensagem();
+                nova.conteudo=JOptionPane.showInputDialog("Digite a mensagem criptografada");
+                nova.conteudo=nova.conteudo.toLowerCase();	
+                nova.novaTambem .conteudo2=JOptionPane.showInputDialog("Digite a senha");
+                nova.novaTambem.conteudo2=nova.novaTambem.conteudo2.toLowerCase();	
+                nova.letras=nova.conteudo.length();
+                nova.novaTambem.letras2=nova.novaTambem.conteudo2.length();
+                String trab="";
+                while(nova.letras>nova.novaTambem.letras2)
+                {
+                    nova.novaTambem.conteudo2+=nova.novaTambem.conteudo2;
+                    nova.novaTambem.letras2 = nova.novaTambem.letras2 + nova.novaTambem.letras2;
+                }
                 char resulFinal='c';
 	        int x = nova.letras -1;
 	        int y = nova.novaTambem.letras2-1;
                 int i2=0;
-	    	for(int i=0; x>=i & y>=i2; i++){
-                int vari2=0;
-                int vari=0; //*deixar a vari aki*
-	    	char msg = nova.conteudo.charAt(i);// atribuindo o valor para a mensagem;
-	   	vari=CalculaLetra(msg,vari);
-                if(vari==0)
+	    	for(int i=0; x>=i & y>=i2; i++)
                 {
-                    resulFinal = nova.conteudo.charAt(i);                   
-                }
-                else{
-                    char msg2 = nova.novaTambem.conteudo2.charAt(i2);//atribuindo o valor para a senha;
-                    resulFinal=CalculaLetra2(msg2,vari2,vari,resulFinal,menu);
-                    i2++;
-                }
-	    	trab += resulFinal;
+                    int vari2=0;
+                    int vari=0; //*deixar a vari aki*
+                    char msg = nova.conteudo.charAt(i);// atribuindo o valor para a mensagem;
+                    vari=CalculaLetra(msg,vari);
+                    if(vari==0)
+                        resulFinal = nova.conteudo.charAt(i);
+                    else
+                    {
+                        char msg2 = nova.novaTambem.conteudo2.charAt(i2);//atribuindo o valor para a senha;
+                        resulFinal=CalculaLetra2(msg2,vari2,vari,resulFinal,menu);
+                        i2++;
+                    }
+                    trab += resulFinal;
                 }//aqui termina o for de condição dupla;
 	    	JOptionPane.showMessageDialog(null,"A sua mensagem descriptografada: \n"+trab);    
 	}
 	else
-            {
             JOptionPane.showMessageDialog(null,"Digite um valor válido");
-            }
+            
+        re_user = JOptionPane.showInputDialog("Deseja continuar? (S/N)").charAt(0);
+        }
     }
 }
