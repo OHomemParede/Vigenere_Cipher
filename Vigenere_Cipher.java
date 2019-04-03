@@ -1,5 +1,5 @@
 import javax.swing.*;
-public class Testes
+public class Testes//código aposentado
 {
     public static int CalculaLetra(char msg, int vari)
     {
