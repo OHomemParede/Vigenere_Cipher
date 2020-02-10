@@ -15,22 +15,21 @@ int find_alpha(char x){
   return -1;
 }
 
-void crip(char *_msg, char *_pwd, char *_cmsg){
+void crip(char *msg, char *pwd, char *cmsg){
   int a;
-  for(a=0;a<strlen(&_pwd[0]);a++){
-  	if(a==strlen(&_pwd[0])){break;}
-  &_cmsg[0] = 'a'//alpha[(find_alpha(&_msg[a])+find_alpha(&_pwd[a]))%26];
-  printf("%c\n", &_cmsg[a]);
+  for(a=0;a<strlen(&pwd[0]);a++){
+  	if(a==strlen(&pwd[0])){break;}
+  *&cmsg[a] = alpha[(find_alpha(*&msg[a])+find_alpha(*&pwd[a]))%26];
   }
 }
 
-/*void desc(char *msg, char *pwd, char *cmsg){
+void desc(char *msg, char *pwd, char *cmsg){
   int a;
-  for(a=0;a<strlen(*pwd);a++){
-  	if(a==strlen(*pwd)){break;}
-	cmsg[a] = alpha[(find_alpha(*msg[a])-find_alpha(*pwd[a]))%26];
+  for(a=0;a<strlen(&pwd[0]);a++){
+  	if(a==strlen(&pwd[0])){break;}
+  *&cmsg[a] = alpha[(find_alpha(*&msg[a])-find_alpha(*&pwd[a]))%26];
   }
-}*/
+}
 
 int main(void) {
   int a;//contadores
@@ -58,7 +57,8 @@ int main(void) {
     printf("%s\n",cmsg);
   }
   else{
-  	//desc(&msg[0], &pwd[0], &cmsg[0]);
+  	desc(&msg[0], &pwd[0], &cmsg[0]);
+    printf("%s\n",cmsg);
   }
   return 0;
 }
