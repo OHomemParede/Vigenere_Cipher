@@ -1,3 +1,3 @@
 # Vigenere_Cipher
 
-Criado por Daniel e Gustavo.
+codificado por Daniel e Gustavo.
